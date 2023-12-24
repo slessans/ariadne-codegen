@@ -38,9 +38,7 @@ def get_client_settings(config_dict: Dict) -> ClientSettings:
     settings_fields_names = {f.name for f in fields(ClientSettings)}
     try:
         section["scalars"] = {
-            name: data
-            if isinstance(data, ScalarData)
-            else ScalarData(
+            name: ScalarData(
                 type_=data["type"],
                 serialize=data.get("serialize"),
                 parse=data.get("parse"),
